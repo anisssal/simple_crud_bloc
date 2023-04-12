@@ -16,7 +16,6 @@ class PostsCubit extends Cubit<PostsState> {
 
   Future<void> getPosts() async {
     emit(state.copyWith(status: PostsStatus.loading));
-
     final result = await _repo.getPosts();
     if (result.data != null) {
       emit(state.copyWith(

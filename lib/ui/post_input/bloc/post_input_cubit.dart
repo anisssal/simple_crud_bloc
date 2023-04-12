@@ -46,6 +46,21 @@ class PostsInputCubit extends Cubit<PostsInputState> {
 
   void setPostBody(String body) =>
       emit(state.copyWith(post: state.post!.copyWith(body: body)));
+
+  void deletePost() async{
+    emit(state.copyWith(deleteStatus: PostsInputStatus.loading));
+
+    final result = await _repo.deletePost(postId: state.post!.id!);
+    if (result.data != null) {
+      emit(state.copyWith(deleteStatus: PostsInputStatus.success));
+    } else if (result.getException != null) {
+      emit(state.copyWith(
+        errorMessage: result.getException!.getErrorMessage(),
+        deleteStatus: PostsInputStatus.failure,
+      ));
+    }
+
+  }
 }
 
 class PostsInputState extends Equatable {
@@ -65,6 +80,7 @@ class PostsInputState extends Equatable {
 
   PostsInputState copyWith({
     PostsInputStatus? status,
+    PostsInputStatus? deleteStatus,
     PostModel? post,
     String? errorMessage,
     bool? isEditMode,

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_crud_bloc/locator.dart';
@@ -22,9 +24,16 @@ class PostScreen extends StatelessWidget {
           backgroundColor: ResColor.colorPrimary,
           title: const Text('JSONPlaceHolder Posts'),
           actions: [
-            IconButton(onPressed: (){
-              Navigator.of(context).push(PostInputScreen.route());
-            }, icon: const Icon(Icons.add ,color: Colors.white,))
+            Builder(
+              builder: (context) {
+                return IconButton(onPressed: ()async{
+                  final result = await Navigator.of(context).push(PostInputScreen.route());
+                  if(result!=null && result as  bool) {
+                    context.read<PostsCubit>().getPosts();
+                  }
+                }, icon: const Icon(Icons.add ,color: Colors.white,));
+              }
+            )
           ],
         ),
         body: const _PostList(),
@@ -71,8 +80,11 @@ class _PostList extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return PostCardWidget(
                   data: state.posts[index],
-                  onTap: () {
-                    Navigator.of(context).push(PostInputScreen.route(model: state.posts[index]));
+                  onTap: () async{
+                    final result =await Navigator.of(context).push(PostInputScreen.route(model: state.posts[index]));
+                    if(result!=null && result as  bool) {
+                      context.read<PostsCubit>().getPosts();
+                    }
                   },
                 );
               },
