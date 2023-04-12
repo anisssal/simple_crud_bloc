@@ -1,5 +1,5 @@
-class Constanst{
-  Constanst._();
+class Constant{
+  Constant._();
 
   static const baseUrl = 'https://jsonplaceholder.typicode.com';
 }
