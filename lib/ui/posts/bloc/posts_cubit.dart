@@ -40,11 +40,7 @@ class PostsState extends Equatable {
       {required this.status,required this.posts, this.errorMessage});
 
   PostsState copyWith({
-    PostsStatus? checkExistsStatus,
-    PostsStatus? addToCartStatus,
     PostsStatus? status,
-    int? articleId,
-    bool? existsOnCart,
     List<PostModel>? posts,
     String? errorMessage,
   }) {

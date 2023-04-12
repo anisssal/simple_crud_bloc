@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_crud_bloc/locator.dart';
+import 'package:simple_crud_bloc/ui/post_input/post_input_screen.dart';
 import 'package:simple_crud_bloc/ui/posts/bloc/posts_cubit.dart';
 import 'package:simple_crud_bloc/ui/posts/widget/post_card_widget.dart';
 import 'package:simple_crud_bloc/ui/widgets/scren_loading_wrapper.dart';
@@ -20,6 +21,11 @@ class PostScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: ResColor.colorPrimary,
           title: const Text('JSONPlaceHolder Posts'),
+          actions: [
+            IconButton(onPressed: (){
+              Navigator.of(context).push(PostInputScreen.route());
+            }, icon: const Icon(Icons.add ,color: Colors.white,))
+          ],
         ),
         body: const _PostList(),
       ),
@@ -66,7 +72,7 @@ class _PostList extends StatelessWidget {
                 return PostCardWidget(
                   data: state.posts[index],
                   onTap: () {
-
+                    Navigator.of(context).push(PostInputScreen.route(model: state.posts[index]));
                   },
                 );
               },

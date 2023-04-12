@@ -21,4 +21,18 @@ class PostModel {
     data['body'] = body;
     return data;
   }
+
+  PostModel copyWith({
+    int? userId,
+    int? id,
+    String? title,
+    String? body,
+  }) {
+    return PostModel(
+      userId: userId ?? this.userId,
+      id: id ?? this.id,
+      title: title ?? this.title,
+      body: body ?? this.body,
+    );
+  }
 }
