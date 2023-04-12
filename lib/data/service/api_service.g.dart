@@ -32,7 +32,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'posts',
+              '/posts',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -58,7 +58,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'posts',
+              '/posts',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -85,7 +85,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'posts/${postId}',
+              '/posts/${postId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -107,7 +107,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          'posts/${postId}',
+          '/posts/${postId}',
           queryParameters: queryParameters,
           data: _data,
         )

@@ -9,6 +9,8 @@ class ResColor{
    static const Color colorAccent = Color(0xff00B1F5);
    static const Color chambrayBlue = Color(0xff385595);
    static const Color red = Color(0xFFF85C5B);
+   static const Color greyTextColor = Color.fromRGBO(57, 86, 103, 1);
+
 
 
 }

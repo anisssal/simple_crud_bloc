@@ -29,16 +29,16 @@ abstract class ApiService {
     return _ApiService(dio,);
   }
 
-  @GET('posts')
+  @GET('/posts')
   Future<List<PostModel>> getPosts();
 
-  @POST('posts')
+  @POST('/posts')
   Future<PostModel> submitPost({ @Body()required PostModel model});
 
-  @PUT('posts/{id}')
+  @PUT('/posts/{id}')
   Future<PostModel> updatePost({@Body() required PostModel model, @Path('id')required int postId});
 
-  @DELETE('posts/{id}')
+  @DELETE('/posts/{id}')
   Future<void> deletePosts({@Path('id') required int postId});
 
 }

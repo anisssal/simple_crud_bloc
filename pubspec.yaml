@@ -30,7 +30,8 @@ dependencies:
   flutter:
     sdk: flutter
   #  network
-  retrofit: ^3.0.1
+  dio: ^4.0.3
+  retrofit: ^3.0.0
 
   #  state management
   flutter_bloc: ^8.0.1
@@ -58,6 +59,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  retrofit_generator: ^3.0.0+1
   build_runner:
   flutter_test:
     sdk: flutter

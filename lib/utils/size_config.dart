@@ -11,7 +11,7 @@ class SizeConfig {
 
   static bool isMobile = false;
 
-    void init(Size size) {
+  static void init(Size size) {
     screenWidth = size.width;
     screenHeight = size.height;
 
